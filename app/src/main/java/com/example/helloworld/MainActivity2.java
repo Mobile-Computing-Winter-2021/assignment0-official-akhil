@@ -104,9 +104,9 @@ public class MainActivity2 extends AppCompatActivity {
         check.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(check1 && check2 && check3 && check4 && check5)
-                    msg = "Safe";
+                    msg = "You're Safe";
                 else
-                    msg = "Not Safe";
+                    msg = "You're Not Safe";
 
                 Toast.makeText(getApplicationContext() , msg, Toast.LENGTH_SHORT).show();
                 returnAnswer(msg);
