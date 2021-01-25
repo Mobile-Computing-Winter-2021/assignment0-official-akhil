@@ -32,7 +32,6 @@ public class MainActivity2 extends AppCompatActivity {
 
         name = (TextView)findViewById(R.id.textView6);
 
-        // create the get Intent object
         Intent intent = getIntent();
 
         Name = intent.getStringExtra("Name");
@@ -43,8 +42,6 @@ public class MainActivity2 extends AppCompatActivity {
         check5 = intent.getBooleanExtra("check5",false);
 
 
-
-        // display the string into textView
         name.setText(Name);
         c1 = (CheckBox) findViewById(R.id.checkBox6);
         c2 = (CheckBox) findViewById(R.id.checkBox);

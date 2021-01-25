@@ -53,9 +53,6 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("check4", check4);
                     boolean check5 = ch5.isChecked();
                     intent.putExtra("check5", check5);
-//                    Log.i(INFO_TAG,"State of Main Activity changed from RESUMED to PAUSED");
-//                    change = "State of Main Activity changed from RESUMED to PAUSED";
-//                    Toast.makeText(getApplicationContext(), change, Toast.LENGTH_SHORT).show();
                     startActivityForResult(intent, requestcode);
                 }
         });
