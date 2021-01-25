@@ -24,11 +24,11 @@ public class MainActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main2);
         Log.i(INFO_TAG,"Second Activity is Created");
         change = "Second Activity is Created";
         Toast.makeText(getApplicationContext(), change, Toast.LENGTH_SHORT).show();
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
 
         name = (TextView)findViewById(R.id.textView6);
 
@@ -119,6 +119,24 @@ public class MainActivity2 extends AppCompatActivity {
         Intent data = new Intent();
         data.putExtra("message",msg);
         setResult(Activity.RESULT_OK,data);
+    }
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        Log.i(INFO_TAG,"Second Activity State is RESUMED");
+        change = "Second Activity State is RESUMED";
+        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_SHORT).show();
+
+    }
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        Log.i(INFO_TAG,"State of Second Activity changed from RESUMED to PAUSED");
+        change = "State of Second Activity changed from RESUMED to PAUSED";
+        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_SHORT).show();
+
     }
     @Override
     public void onDestroy()
