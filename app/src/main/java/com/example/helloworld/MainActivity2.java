@@ -120,4 +120,12 @@ public class MainActivity2 extends AppCompatActivity {
         data.putExtra("message",msg);
         setResult(Activity.RESULT_OK,data);
     }
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        Log.i(INFO_TAG,"Second Activity is Destroyed");
+        change = "Second Activity is Destroyed";
+        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_SHORT).show();
+    }
 }

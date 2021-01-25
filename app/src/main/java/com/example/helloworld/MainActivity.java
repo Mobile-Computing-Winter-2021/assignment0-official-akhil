@@ -53,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("check4", check4);
                     boolean check5 = ch5.isChecked();
                     intent.putExtra("check5", check5);
-                    Log.i(INFO_TAG,"State of Main Activity changed from RESUMED to PAUSED");
-                    change = "State of Main Activity changed from RESUMED to PAUSED";
-                    Toast.makeText(getApplicationContext(), change, Toast.LENGTH_SHORT).show();
+//                    Log.i(INFO_TAG,"State of Main Activity changed from RESUMED to PAUSED");
+//                    change = "State of Main Activity changed from RESUMED to PAUSED";
+//                    Toast.makeText(getApplicationContext(), change, Toast.LENGTH_SHORT).show();
                     startActivityForResult(intent, requestcode);
                 }
         });
@@ -80,13 +80,34 @@ public class MainActivity extends AppCompatActivity {
         et.setText("");
     }
     @Override
+    public void onResume()
+    {
+        super.onResume();
+        Log.i(INFO_TAG,"Main Activity State is RESUMED");
+        change = "Main Activity State is RESUMED";
+        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_SHORT).show();
+
+    }
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        Log.i(INFO_TAG,"State of Main Activity changed from RESUMED to PAUSED");
+        change = "State of Main Activity changed from RESUMED to PAUSED";
+        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_SHORT).show();
+
+    }
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        Log.i(INFO_TAG,"Main Activity is Destroyed");
+        change = "Main Activity is Destroyed";
+        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_SHORT).show();
+    }
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {   Log.i(INFO_TAG,"Second Activity is Destroyed");
-        change = "Second Activity is Destroyed";
-        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_SHORT).show();
-        Log.i(INFO_TAG,"State of Main Activity changed from PAUSED to RESUMED");
-        change = "State of Main Activity changed from PAUSED to RESUMED";
-        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_SHORT).show();
+    {
         super.onActivityResult(requestCode, resultCode, data);
         String msg;
         if (requestCode == requestcode && resultCode == RESULT_OK && data != null) {
