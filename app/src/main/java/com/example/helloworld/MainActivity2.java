@@ -28,7 +28,7 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         Log.i(INFO_TAG,"Second Activity is Created");
         change = "Second Activity is Created";
-        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_LONG).show();
 
         name = (TextView)findViewById(R.id.textView6);
 
@@ -105,7 +105,7 @@ public class MainActivity2 extends AppCompatActivity {
                 else
                     msg = "You're Not Safe";
 
-                Toast.makeText(getApplicationContext() , msg, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext() , msg, Toast.LENGTH_LONG).show();
                 returnAnswer(msg);
             }
         });
@@ -118,12 +118,21 @@ public class MainActivity2 extends AppCompatActivity {
         setResult(Activity.RESULT_OK,data);
     }
     @Override
+    public void onStart()
+    {
+        super.onStart();
+        Log.i(INFO_TAG,"Second Activity is STARTED");
+        change = "Second Activity is STARTED";
+        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_LONG).show();
+
+    }
+    @Override
     public void onResume()
     {
         super.onResume();
-        Log.i(INFO_TAG,"Second Activity State is RESUMED");
-        change = "Second Activity State is RESUMED";
-        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_SHORT).show();
+        Log.i(INFO_TAG,"Second Activity is in RESUMED state");
+        change = "Second Activity is in RESUMED state";
+        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_LONG).show();
 
     }
     @Override
@@ -132,7 +141,16 @@ public class MainActivity2 extends AppCompatActivity {
         super.onPause();
         Log.i(INFO_TAG,"State of Second Activity changed from RESUMED to PAUSED");
         change = "State of Second Activity changed from RESUMED to PAUSED";
-        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_LONG).show();
+
+    }
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+        Log.i(INFO_TAG,"Second Activity is STOPPED");
+        change = "Second Activity is STOPPED";
+        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_LONG).show();
 
     }
     @Override
@@ -141,6 +159,6 @@ public class MainActivity2 extends AppCompatActivity {
         super.onDestroy();
         Log.i(INFO_TAG,"Second Activity is Destroyed");
         change = "Second Activity is Destroyed";
-        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_LONG).show();
     }
 }

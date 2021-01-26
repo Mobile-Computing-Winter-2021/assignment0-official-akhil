@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.i(INFO_TAG,"Main Activity is Created");
         change = "Main Activity is Created";
-        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_LONG).show();
         submit_button = (Button)findViewById(R.id.button3);
         send_text = (EditText)findViewById(R.id.Name);
         ch1=(CheckBox)findViewById(R.id.checkBox1);
@@ -77,12 +77,21 @@ public class MainActivity extends AppCompatActivity {
         et.setText("");
     }
     @Override
+    public void onStart()
+    {
+        super.onStart();
+        Log.i(INFO_TAG,"Main Activity is STARTED");
+        change = "Main Activity is STARTED";
+        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_LONG).show();
+
+    }
+    @Override
     public void onResume()
     {
         super.onResume();
-        Log.i(INFO_TAG,"Main Activity State is RESUMED");
-        change = "Main Activity State is RESUMED";
-        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_SHORT).show();
+        Log.i(INFO_TAG,"Main Activity State is in RESUMED state");
+        change = "Main Activity is in RESUMED state";
+        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_LONG).show();
 
     }
     @Override
@@ -91,7 +100,16 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         Log.i(INFO_TAG,"State of Main Activity changed from RESUMED to PAUSED");
         change = "State of Main Activity changed from RESUMED to PAUSED";
-        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_LONG).show();
+
+    }
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+        Log.i(INFO_TAG,"Main Activity is STOPPED");
+        change = "Main Activity is STOPPED";
+        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_LONG).show();
 
     }
     @Override
@@ -100,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         Log.i(INFO_TAG,"Main Activity is Destroyed");
         change = "Main Activity is Destroyed";
-        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), change, Toast.LENGTH_LONG).show();
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
@@ -109,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         String msg;
         if (requestCode == requestcode && resultCode == RESULT_OK && data != null) {
             msg = data.getStringExtra("message");
-            Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
         }
     }
 }
