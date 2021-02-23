@@ -64,7 +64,7 @@ public class StudentListFragment extends Fragment {
             itemView.setOnClickListener(this);
 
             mTitleTextView = (TextView) itemView.findViewById(R.id.stu_title);
-            mDateTextView = (TextView) itemView.findViewById(R.id.stu_date);
+            mDateTextView = (TextView) itemView.findViewById(R.id.stu_name);
         }
 
         public void bind(Student student) {

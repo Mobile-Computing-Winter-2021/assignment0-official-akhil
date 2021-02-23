@@ -33,7 +33,7 @@ public class StudentFragment extends Fragment {
 
         mTitleField = (EditText) v.findViewById(R.id.stu1_title);
         mTitleField.setText(mStudent.getTitle());
-        mNameField = (EditText) v.findViewById(R.id.stu_name);
+        mNameField = (EditText) v.findViewById(R.id.stu1_name);
         mNameField.setText(mStudent.getName());
         mdepts = (EditText) v.findViewById(R.id.stu_Dept);
         mdepts.setText(mStudent.getDept());

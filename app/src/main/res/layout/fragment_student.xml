@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:text="@string/crime_details_label"/>
     <EditText
-        android:id="@+id/stu_name"
+        android:id="@+id/stu1_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/crime_name_hint"/>
