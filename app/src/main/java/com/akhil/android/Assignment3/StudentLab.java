@@ -31,7 +31,7 @@ public class StudentLab {
                 ,"sam@gmail.com","samya@gmail.com","bindu@gmail.com","adwait@gmail.com","snehasis@gmail.com","sachin@gmail.com","pranav@gmail.com","sid@gmail.com","adwait@gmail.com"};
         for (int i = 1; i <=30; i++) {
             Student student = new Student();
-            student.setTitle(String.valueOf(i));
+            student.setRollno(String.valueOf(i));
             student.setName(mnames[i-1]);
             student.setDept(mdepts[i-1]);
             student.setemail(memails[i-1]);
@@ -39,11 +39,11 @@ public class StudentLab {
         }
     }
 
-    public List<Student> getCrimes() {
+    public List<Student> getStudents() {
         return mStudents;
     }
 
-    public Student getCrime(UUID id) {
+    public Student getStudent(UUID id) {
         for (Student student : mStudents) {
             if (student.getId().equals(id)) {
                 return student;

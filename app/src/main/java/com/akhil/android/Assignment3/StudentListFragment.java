@@ -14,17 +14,17 @@ import android.widget.Toast;
 import java.util.List;
 
 public class StudentListFragment extends Fragment {
-    private RecyclerView mCrimeRecyclerView;
-    private CrimeAdapter mAdapter;
+    private RecyclerView mStudentRecyclerView;
+    private StudentAdapter mAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_student_list, container, false);
 
-        mCrimeRecyclerView = (RecyclerView) view
+        mStudentRecyclerView = (RecyclerView) view
                 .findViewById(R.id.crime_recycler_view);
-        mCrimeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mStudentRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         updateUI();
 
@@ -39,11 +39,11 @@ public class StudentListFragment extends Fragment {
 
     private void updateUI() {
         StudentLab studentLab = StudentLab.get(getActivity());
-        List<Student> students = studentLab.getCrimes();
+        List<Student> students = studentLab.getStudents();
         if (mAdapter == null)
         {
-            mAdapter = new CrimeAdapter(students);
-            mCrimeRecyclerView.setAdapter(mAdapter);
+            mAdapter = new StudentAdapter(students);
+            mStudentRecyclerView.setAdapter(mAdapter);
         }
         else
         {
@@ -51,26 +51,26 @@ public class StudentListFragment extends Fragment {
         }
     }
 
-    private class CrimeHolder extends RecyclerView.ViewHolder
+    private class StudentHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {
 
         private Student mStudent;
 
         private TextView mTitleTextView;
-        private TextView mDateTextView;
+        private TextView mNameTextView;
 
-        public CrimeHolder(LayoutInflater inflater, ViewGroup parent) {
+        public StudentHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_student, parent, false));
             itemView.setOnClickListener(this);
 
             mTitleTextView = (TextView) itemView.findViewById(R.id.stu_title);
-            mDateTextView = (TextView) itemView.findViewById(R.id.stu_name);
+            mNameTextView = (TextView) itemView.findViewById(R.id.stu_name);
         }
 
         public void bind(Student student) {
             mStudent = student;
-            mTitleTextView.setText("Student Roll Number = " + mStudent.getTitle());
-            mDateTextView.setText("Student Name = " + mStudent.getName().toString());
+            mTitleTextView.setText("Student Roll Number = " + mStudent.getRollno());
+            mNameTextView.setText("Student Name = " + mStudent.getName().toString());
         }
 
         @Override
@@ -78,27 +78,27 @@ public class StudentListFragment extends Fragment {
             Intent intent = StudentActivity.newIntent(getActivity(), mStudent.getId());
             startActivity(intent);
             Toast.makeText(getActivity(),
-                    "Roll Number = "+ mStudent.getTitle() + " clicked!", Toast.LENGTH_SHORT)
+                    "Roll Number = "+ mStudent.getRollno() + " clicked!", Toast.LENGTH_SHORT)
                     .show();
         }
     }
 
-    private class CrimeAdapter extends RecyclerView.Adapter<CrimeHolder> {
+    private class StudentAdapter extends RecyclerView.Adapter<StudentHolder> {
 
         private List<Student> mStudents;
 
-        public CrimeAdapter(List<Student> students) {
+        public StudentAdapter(List<Student> students) {
             mStudents = students;
         }
 
         @Override
-        public CrimeHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public StudentHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            return new CrimeHolder(layoutInflater, parent);
+            return new StudentHolder(layoutInflater, parent);
         }
 
         @Override
-        public void onBindViewHolder(CrimeHolder holder, int position) {
+        public void onBindViewHolder(StudentHolder holder, int position) {
             Student student = mStudents.get(position);
             holder.bind(student);
         }

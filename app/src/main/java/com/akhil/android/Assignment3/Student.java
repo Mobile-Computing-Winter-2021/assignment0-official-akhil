@@ -5,7 +5,7 @@ import java.util.UUID;
 public class Student {
 
     private UUID mId;
-    private String mTitle;
+    private String mrollno;
     private String mName;
     private String mDepartment;
     private String memailid;
@@ -18,19 +18,19 @@ public class Student {
         return mId;
     }
 
-    public String getTitle() {
-        return mTitle;
+    public String getRollno() {
+        return mrollno;
     }
 
-    public void setTitle(String title) {
-        mTitle = title;
+    public void setRollno(String title) {
+        mrollno = title;
     }
 
     public String getName() {
         return mName;
     }
 
-    public void setName(String date) { mName = date; }
+    public void setName(String name) { mName = name; }
 
     public String getDept(){return mDepartment;}
 

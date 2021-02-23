@@ -14,7 +14,7 @@ import java.util.UUID;
 public class StudentFragment extends Fragment {
 
     private Student mStudent;
-    private EditText mTitleField;
+    private EditText mRollnoField;
     private EditText mNameField;
     private EditText mdepts;
     private EditText memail;
@@ -22,8 +22,8 @@ public class StudentFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UUID crimeId = (UUID) getActivity().getIntent().getSerializableExtra(StudentActivity.Extra_id);
-        mStudent = StudentLab.get(getActivity()).getCrime(crimeId);
+        UUID studentId = (UUID) getActivity().getIntent().getSerializableExtra(StudentActivity.Extra_id);
+        mStudent = StudentLab.get(getActivity()).getStudent(studentId);
     }
 
     @Override
@@ -31,8 +31,8 @@ public class StudentFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_student, container, false);
 
-        mTitleField = (EditText) v.findViewById(R.id.stu1_title);
-        mTitleField.setText(mStudent.getTitle());
+        mRollnoField = (EditText) v.findViewById(R.id.stu1_title);
+        mRollnoField.setText(mStudent.getRollno());
         mNameField = (EditText) v.findViewById(R.id.stu1_name);
         mNameField.setText(mStudent.getName());
         mdepts = (EditText) v.findViewById(R.id.stu_Dept);
@@ -43,11 +43,11 @@ public class StudentFragment extends Fragment {
         change_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CharSequence roll_no = mTitleField.getText();
+                CharSequence roll_no = mRollnoField.getText();
                 CharSequence name = mNameField.getText();
                 CharSequence dept = mdepts.getText();
                 CharSequence emailid = memail.getText();
-                mStudent.setTitle(roll_no.toString());
+                mStudent.setRollno(roll_no.toString());
                 mStudent.setName(name.toString());
                 mStudent.setDept(dept.toString());
                 mStudent.setemail(emailid.toString());
