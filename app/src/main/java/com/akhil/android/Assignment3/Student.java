@@ -1,16 +1,16 @@
-package com.bignerdranch.android.criminalintent;
+package com.akhil.android.Assignment3;
 
 import java.util.UUID;
 
-public class Crime {
+public class Student {
 
     private UUID mId;
     private String mTitle;
-    private String mDate;
+    private String mName;
     private String mDepartment;
     private String memailid;
 
-    public Crime() {
+    public Student() {
         mId = UUID.randomUUID();
     }
 
@@ -26,11 +26,11 @@ public class Crime {
         mTitle = title;
     }
 
-    public String getDate() {
-        return mDate;
+    public String getName() {
+        return mName;
     }
 
-    public void setDate(String date) { mDate = date; }
+    public void setName(String date) { mName = date; }
 
     public String getDept(){return mDepartment;}
 

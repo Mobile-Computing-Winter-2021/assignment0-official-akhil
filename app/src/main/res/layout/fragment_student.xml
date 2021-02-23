@@ -22,7 +22,7 @@
         android:text="@string/crime_title_label"/>
 
     <EditText
-        android:id="@+id/crime_title"
+        android:id="@+id/stu1_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/crime_title_hint"/>
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:text="@string/crime_details_label"/>
     <EditText
-        android:id="@+id/crime_name"
+        android:id="@+id/stu_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/crime_name_hint"/>
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:text="@string/crime_depts_label"/>
     <EditText
-        android:id="@+id/crime_Dept"
+        android:id="@+id/stu_Dept"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/crime_dept_hint"/>
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:text="@string/crime_email_label"/>
     <EditText
-        android:id="@+id/crime_emailid"
+        android:id="@+id/stu_emailid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/crime_emailid_hint"/>

@@ -1,4 +1,4 @@
-package com.bignerdranch.android.criminalintent;
+package com.akhil.android.Assignment3;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,14 +13,14 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class CrimeListFragment extends Fragment {
+public class StudentListFragment extends Fragment {
     private RecyclerView mCrimeRecyclerView;
     private CrimeAdapter mAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_crime_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_student_list, container, false);
 
         mCrimeRecyclerView = (RecyclerView) view
                 .findViewById(R.id.crime_recycler_view);
@@ -38,11 +38,11 @@ public class CrimeListFragment extends Fragment {
     }
 
     private void updateUI() {
-        CrimeLab crimeLab = CrimeLab.get(getActivity());
-        List<Crime> crimes = crimeLab.getCrimes();
+        StudentLab studentLab = StudentLab.get(getActivity());
+        List<Student> students = studentLab.getCrimes();
         if (mAdapter == null)
         {
-            mAdapter = new CrimeAdapter(crimes);
+            mAdapter = new CrimeAdapter(students);
             mCrimeRecyclerView.setAdapter(mAdapter);
         }
         else
@@ -54,41 +54,41 @@ public class CrimeListFragment extends Fragment {
     private class CrimeHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {
 
-        private Crime mCrime;
+        private Student mStudent;
 
         private TextView mTitleTextView;
         private TextView mDateTextView;
 
         public CrimeHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.list_item_crime, parent, false));
+            super(inflater.inflate(R.layout.list_item_student, parent, false));
             itemView.setOnClickListener(this);
 
-            mTitleTextView = (TextView) itemView.findViewById(R.id.crime_title);
-            mDateTextView = (TextView) itemView.findViewById(R.id.crime_date);
+            mTitleTextView = (TextView) itemView.findViewById(R.id.stu_title);
+            mDateTextView = (TextView) itemView.findViewById(R.id.stu_date);
         }
 
-        public void bind(Crime crime) {
-            mCrime = crime;
-            mTitleTextView.setText("Student Roll Number = " + mCrime.getTitle());
-            mDateTextView.setText("Student Name = " + mCrime.getDate().toString());
+        public void bind(Student student) {
+            mStudent = student;
+            mTitleTextView.setText("Student Roll Number = " + mStudent.getTitle());
+            mDateTextView.setText("Student Name = " + mStudent.getName().toString());
         }
 
         @Override
         public void onClick(View view) {
-            Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
+            Intent intent = StudentActivity.newIntent(getActivity(), mStudent.getId());
             startActivity(intent);
             Toast.makeText(getActivity(),
-                    "Roll Number = "+ mCrime.getTitle() + " clicked!", Toast.LENGTH_SHORT)
+                    "Roll Number = "+ mStudent.getTitle() + " clicked!", Toast.LENGTH_SHORT)
                     .show();
         }
     }
 
     private class CrimeAdapter extends RecyclerView.Adapter<CrimeHolder> {
 
-        private List<Crime> mCrimes;
+        private List<Student> mStudents;
 
-        public CrimeAdapter(List<Crime> crimes) {
-            mCrimes = crimes;
+        public CrimeAdapter(List<Student> students) {
+            mStudents = students;
         }
 
         @Override
@@ -99,13 +99,13 @@ public class CrimeListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(CrimeHolder holder, int position) {
-            Crime crime = mCrimes.get(position);
-            holder.bind(crime);
+            Student student = mStudents.get(position);
+            holder.bind(student);
         }
 
         @Override
         public int getItemCount() {
-            return mCrimes.size();
+            return mStudents.size();
         }
     }
 }

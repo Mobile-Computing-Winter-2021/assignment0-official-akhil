@@ -1,4 +1,4 @@
-package com.bignerdranch.android.criminalintent;
+package com.akhil.android.Assignment3;
 
 import org.junit.Test;
 

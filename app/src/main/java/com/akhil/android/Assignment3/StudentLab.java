@@ -1,4 +1,4 @@
-package com.bignerdranch.android.criminalintent;
+package com.akhil.android.Assignment3;
 
 import android.content.Context;
 
@@ -6,21 +6,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class CrimeLab {
-    private static CrimeLab sCrimeLab;
+public class StudentLab {
+    private static StudentLab sStudentLab;
 
-    private List<Crime> mCrimes;
+    private List<Student> mStudents;
 
-    public static CrimeLab get(Context context) {
-        if (sCrimeLab == null) {
-            sCrimeLab = new CrimeLab(context);
+    public static StudentLab get(Context context) {
+        if (sStudentLab == null) {
+            sStudentLab = new StudentLab(context);
         }
 
-        return sCrimeLab;
+        return sStudentLab;
     }
 
-    private CrimeLab(Context context) {
-        mCrimes = new ArrayList<>();
+    private StudentLab(Context context) {
+        mStudents = new ArrayList<>();
         String[] mnames = {"Akhil","Antra","Anil","Kusam","Kamla","Subhash","Amit","Akshay","Arti","Shruti","Anju","Mehak","Youshita","Ishaan","Geeta","Shiv"
                 ,"Chander","Manju","Aviral","Prabal","Sneh","Samridhi","Samya","Bindu","Adwait","Snehasis","Sachin","Pranav","Sid","Adwait"};
         String[] mdepts = {"CSE","ECE","CSE","Mechanical","EEE","ECE","CB","Mechanical","EEE","CB","CSE","CB","ECE","CSE","EEE","ECE","Mechanical","CB","ECE"
@@ -30,23 +30,23 @@ public class CrimeLab {
                 "ish@gmail.com","geeta@gmail.com","shiv@gmail.com","chander@gmail.com","manju@gmail.com","aviral@gmail.com","prabal@gmail.com","sneh@gmail.com"
                 ,"sam@gmail.com","samya@gmail.com","bindu@gmail.com","adwait@gmail.com","snehasis@gmail.com","sachin@gmail.com","pranav@gmail.com","sid@gmail.com","adwait@gmail.com"};
         for (int i = 1; i <=30; i++) {
-            Crime crime = new Crime();
-            crime.setTitle(String.valueOf(i));
-            crime.setDate(mnames[i-1]);
-            crime.setDept(mdepts[i-1]);
-            crime.setemail(memails[i-1]);
-            mCrimes.add(crime);
+            Student student = new Student();
+            student.setTitle(String.valueOf(i));
+            student.setName(mnames[i-1]);
+            student.setDept(mdepts[i-1]);
+            student.setemail(memails[i-1]);
+            mStudents.add(student);
         }
     }
 
-    public List<Crime> getCrimes() {
-        return mCrimes;
+    public List<Student> getCrimes() {
+        return mStudents;
     }
 
-    public Crime getCrime(UUID id) {
-        for (Crime crime : mCrimes) {
-            if (crime.getId().equals(id)) {
-                return crime;
+    public Student getCrime(UUID id) {
+        for (Student student : mStudents) {
+            if (student.getId().equals(id)) {
+                return student;
             }
         }
         return null;
