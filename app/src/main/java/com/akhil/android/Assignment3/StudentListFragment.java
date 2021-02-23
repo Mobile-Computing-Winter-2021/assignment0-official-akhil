@@ -23,7 +23,7 @@ public class StudentListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_student_list, container, false);
 
         mStudentRecyclerView = (RecyclerView) view
-                .findViewById(R.id.crime_recycler_view);
+                .findViewById(R.id.student_recycler_view);
         mStudentRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         updateUI();
