@@ -31,7 +31,7 @@ public class StudentFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_student, container, false);
 
-        mRollnoField = (EditText) v.findViewById(R.id.stu1_title);
+        mRollnoField = (EditText) v.findViewById(R.id.stu1_rollno);
         mRollnoField.setText(mStudent.getRollno());
         mNameField = (EditText) v.findViewById(R.id.stu1_name);
         mNameField.setText(mStudent.getName());

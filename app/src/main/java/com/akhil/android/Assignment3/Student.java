@@ -22,8 +22,8 @@ public class Student {
         return mrollno;
     }
 
-    public void setRollno(String title) {
-        mrollno = title;
+    public void setRollno(String rollno) {
+        mrollno = rollno;
     }
 
     public String getName() {

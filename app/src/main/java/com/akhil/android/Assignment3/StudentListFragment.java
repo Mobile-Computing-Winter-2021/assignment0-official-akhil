@@ -56,20 +56,20 @@ public class StudentListFragment extends Fragment {
 
         private Student mStudent;
 
-        private TextView mTitleTextView;
+        private TextView mrollnoTextView;
         private TextView mNameTextView;
 
         public StudentHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_student, parent, false));
             itemView.setOnClickListener(this);
 
-            mTitleTextView = (TextView) itemView.findViewById(R.id.stu_title);
+            mrollnoTextView = (TextView) itemView.findViewById(R.id.stu_rollno);
             mNameTextView = (TextView) itemView.findViewById(R.id.stu_name);
         }
 
         public void bind(Student student) {
             mStudent = student;
-            mTitleTextView.setText("Student Roll Number = " + mStudent.getRollno());
+            mrollnoTextView.setText("Student Roll Number = " + mStudent.getRollno());
             mNameTextView.setText("Student Name = " + mStudent.getName().toString());
         }
 
