@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CriminalIntent</string>
+    <string name="crime_title_hint">Enter roll number of the Student.</string>
+    <string name="crime_name_hint">Enter Name of the Student.</string>
+    <string name="crime_dept_hint">Enter Department of the Student.</string>
+    <string name="crime_emailid_hint">Enter Emailid of the Student.</string>
+    <string name="crime_title_label">Student Roll Number</string>
+    <string name="crime_details_label">Student Name</string>
+    <string name="crime_depts_label">Student Department</string>
+    <string name="crime_email_label">Student Email ID</string>
+    <string name="crime_solved_label">Solved</string>
+</resources>
