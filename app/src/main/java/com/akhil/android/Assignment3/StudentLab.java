@@ -22,13 +22,13 @@ public class StudentLab {
     private StudentLab(Context context) {
         mStudents = new ArrayList<>();
         String[] mnames = {"Akhil","Antra","Anil","Kusam","Kamla","Subhash","Amit","Akshay","Arti","Shruti","Anju","Mehak","Youshita","Ishaan","Geeta","Shiv"
-                ,"Chander","Manju","Aviral","Prabal","Sneh","Samridhi","Samya","Bindu","Adwait","Snehasis","Sachin","Pranav","Sid","Adwait"};
+                ,"Chander","Manju","Aviral","Prabal","Sneh","Samridhi","Samya","Bindu","Adwait","Snehasis","Sachin","Pranav","Sid","Anirudh"};
         String[] mdepts = {"CSE","ECE","CSE","Mechanical","EEE","ECE","CB","Mechanical","EEE","CB","CSE","CB","ECE","CSE","EEE","ECE","Mechanical","CB","ECE"
         ,"CSE","EEE","CB","CSE","ECE","Mechanical","CSE","ECE","EEE","CB","CSE"};
         String[] memails = {"akhil20107@iiitd.ac.in","antra123@gmail.com","anil345@rediffmail.com","kumi12df@gmail.com","kamla@gmail.com","su@gmail.com",
                 "amit@gmail.com","akshay@gmail.com","arti@gmail.com","shruti@gmail.com","anju@gmail.com","mehak@gmail.com","youshita@gmail.com",
                 "ish@gmail.com","geeta@gmail.com","shiv@gmail.com","chander@gmail.com","manju@gmail.com","aviral@gmail.com","prabal@gmail.com","sneh@gmail.com"
-                ,"sam@gmail.com","samya@gmail.com","bindu@gmail.com","adwait@gmail.com","snehasis@gmail.com","sachin@gmail.com","pranav@gmail.com","sid@gmail.com","adwait@gmail.com"};
+                ,"sam@gmail.com","samya@gmail.com","bindu@gmail.com","adwait@gmail.com","snehasis@gmail.com","sachin@gmail.com","pranav@gmail.com","sid@gmail.com","anirudh@gmail.com"};
         for (int i = 1; i <=30; i++) {
             Student student = new Student();
             student.setRollno(String.valueOf(i));
