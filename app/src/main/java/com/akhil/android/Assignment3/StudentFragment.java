@@ -33,6 +33,7 @@ public class StudentFragment extends Fragment {
 
         mRollnoField = (EditText) v.findViewById(R.id.stu1_rollno);
         mRollnoField.setText(mStudent.getRollno());
+        mRollnoField.setEnabled(false);
         mNameField = (EditText) v.findViewById(R.id.stu1_name);
         mNameField.setText(mStudent.getName());
         mdepts = (EditText) v.findViewById(R.id.stu_Dept);
@@ -43,11 +44,11 @@ public class StudentFragment extends Fragment {
         change_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CharSequence roll_no = mRollnoField.getText();
+//                CharSequence roll_no = mRollnoField.getText();
                 CharSequence name = mNameField.getText();
                 CharSequence dept = mdepts.getText();
                 CharSequence emailid = memail.getText();
-                mStudent.setRollno(roll_no.toString());
+//                mStudent.setRollno(roll_no.toString());
                 mStudent.setName(name.toString());
                 mStudent.setDept(dept.toString());
                 mStudent.setemail(emailid.toString());
