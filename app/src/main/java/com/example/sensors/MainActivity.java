@@ -233,7 +233,6 @@ public class MainActivity extends AppCompatActivity {
                 total_l=0;
                 avg_l=0;
                 List<Light> light_values = senserDao.getlightValues();
-//                Toast.makeText(MainActivity.this,"Total values recorded : "+ light_values.size(), Toast.LENGTH_SHORT).show();
                     for(Light lig:light_values)
                 {
                     float x = lig.getilum();
@@ -243,7 +242,6 @@ public class MainActivity extends AppCompatActivity {
                 String avg_li = "Total values recorded : " + light_values.size() + "\nAverage Light = " + avg_l + "\n\n";
                 show_light.setText(avg_li);
                 show_light.setVisibility(View.VISIBLE);
-//                    Toast.makeText(getApplicationContext(),"Average Illuminance = "+avg_l, Toast.LENGTH_SHORT).show();
             }
         });
         listener = new LocationListener() {
