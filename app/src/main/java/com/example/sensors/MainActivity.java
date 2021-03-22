@@ -20,7 +20,6 @@ import androidx.room.Dao;
 import androidx.room.Database;
 import androidx.room.Entity;
 import androidx.room.Insert;
-import androidx.room.OnConflictStrategy;
 import androidx.room.PrimaryKey;
 import androidx.room.Query;
 import androidx.room.Room;
@@ -35,7 +34,6 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -147,16 +145,15 @@ public class MainActivity extends AppCompatActivity {
     private LocationManager locationManager;
     private LocationListener listener;
     private Sensor mAcc, lAcc, light, prox, temp;
-    private float[] mGravity;
-    private float mAccel;
-    private float mAccelCurrent;
-    private float mAccelLast;
-    private int hitCount = 0;
-    private double hitSum = 0;
-    private double hitResult = 0;
+    private float acceleration;
+    private float cur_acc;
+    private float last_acc;
+    private int sensed = 0;
+    private double sensed_sum = 0;
+    private double sensed_avg = 0;
 
-    private final int SAMPLE_SIZE = 50; // change this sample size as you want, higher is more precise but slow measure.
-    private final double THRESHOLD = 0.3;
+    private final int samp = 50; // change this sample size as you want, higher is more precise but slow measure.
+    private final double th = 0.3;
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch acc_switch,lacc_switch, light_switch, prox_switch, temp_switch, loc_switch;
     TextView acc_x, acc_y, acc_z, l_acc_x, l_acc_y, l_acc_z, light_val, prox_value, temp_value, lati, longi, show_acc,show_light, check_walk;
@@ -174,9 +171,9 @@ public class MainActivity extends AppCompatActivity {
         prox = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
         temp = mSensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        mAccel = 0.00f;
-        mAccelCurrent = SensorManager.GRAVITY_EARTH;
-        mAccelLast = SensorManager.GRAVITY_EARTH;
+        acceleration = 0.00f;
+        cur_acc = SensorManager.GRAVITY_EARTH;
+        last_acc = SensorManager.GRAVITY_EARTH;
         b=findViewById(R.id.button);
         l = findViewById(R.id.light_button);
         temp_value = findViewById(R.id.temperature);
@@ -324,6 +321,8 @@ public class MainActivity extends AppCompatActivity {
                             acc_x.setText("Sensor off");
                             acc_y.setText("Sensor off");
                             acc_z.setText("Sensor off");
+                            check_walk = findViewById(R.id.textView5);
+                            check_walk.setText("Accelerometer Off");
                             flag=1;
                         } else {
                             mSensorManager.registerListener(mSensorListener, mAcc, SensorManager.SENSOR_DELAY_NORMAL);
@@ -409,36 +408,26 @@ public class MainActivity extends AppCompatActivity {
                         float x = event.values[0];
                         float y = event.values[1];
                         float z = event.values[2];
-                        mAccelLast = mAccelCurrent;
-                        mAccelCurrent = (float)Math.sqrt(x*x + y*y + z*z);
-                        float delta = mAccelCurrent - mAccelLast;
-                        mAccel = mAccel * 0.9f + delta;
-                        if (hitCount <= SAMPLE_SIZE) {
-                            hitCount++;
-                            hitSum += Math.abs(mAccel);
+                        last_acc = cur_acc;
+                        cur_acc = (float)Math.sqrt(x*x + y*y + z*z);
+                        float change = cur_acc - last_acc;
+                        acceleration = acceleration * 0.9f + change;
+                        if (sensed <= samp) {
+                            sensed++;
+                            sensed_sum += Math.abs(acceleration);
                         } else {
-                            hitResult = hitSum / SAMPLE_SIZE;
-
-                            Log.d("dist", String.valueOf(hitResult));
-
-                            if (hitResult > THRESHOLD) {
+                            sensed_avg = sensed_sum / samp;
+                            Log.d("dist", String.valueOf(sensed_avg));
+                            if (sensed_avg > th) {
                                 check_walk.setText("Walking");
                             } else {
                                 check_walk.setText("Stationary");
                             }
 
-                            hitCount = 0;
-                            hitSum = 0;
-                            hitResult = 0;
+                            sensed = 0;
+                            sensed_sum = 0;
+                            sensed_avg = 0;
                         }
-//                        if(mAccel > 1){
-//
-//                            check_walk.setText("Walking");
-//                        }
-//                        else
-//                        {
-//                            check_walk.setText("Stationary");
-//                        }
                         Date acc_cal = Calendar.getInstance().getTime();
                         SimpleDateFormat acc_date = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss", Locale.getDefault());
                         String requiredDateformat = acc_date.format(acc_cal);
