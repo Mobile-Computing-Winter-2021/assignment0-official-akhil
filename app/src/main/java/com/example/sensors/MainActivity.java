@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
     private double sensed_sum = 0;
     private double sensed_avg = 0;
 
-    private final int samp = 50; // change this sample size as you want, higher is more precise but slow measure.
+    private final int samp = 50;
     private final double th = 0.3;
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch acc_switch,lacc_switch, light_switch, prox_switch, temp_switch, loc_switch;
