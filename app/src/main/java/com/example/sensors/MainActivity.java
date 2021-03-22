@@ -242,6 +242,7 @@ public class MainActivity extends AppCompatActivity {
                 String avg_li = "Total values recorded : " + light_values.size() + "\nAverage Light = " + avg_l + "\n\n";
                 show_light.setText(avg_li);
                 show_light.setVisibility(View.VISIBLE);
+
             }
         });
         listener = new LocationListener() {
